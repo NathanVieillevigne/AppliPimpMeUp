@@ -4,15 +4,12 @@ import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import { Pressable, StyleSheet, Text, View, Image, Button } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import Accueil from './Accueil';
 import Boutique from './Boutique';
 import Prestation from './Prestation';
-import Compte from './Compte';
 import Panier from './Panier';
-import SplashScreen from './SplashScreen';
 import SignInScreen from './SignInScreen';
-import SignUpScreen from './SignUpScreen';
-import Produits from './Produits';
+import NavAccueil from './NavAccueil';
+import NavProfil from './NavProfil';
 
 
 
@@ -32,7 +29,7 @@ function LogoTitle() {
 function NavigationTab(){
 
   return(
-    <Tab.Navigator initialRouteName="Accueil" 
+    <Tab.Navigator initialRouteName="NavAccueil" 
       screenOptions = {({route}) => ({
         tabBarIcon: ({size,color,focused}) => {
           let iconnom;
@@ -40,7 +37,7 @@ function NavigationTab(){
             iconnom = 'cart-plus';
             size = focused ? 25 : 20;
             color = focused ? 'red' : 'black';
-          } else if (route.name === 'Accueil'){
+          } else if (route.name === 'NavAccueil'){
             iconnom = 'home';
             size = focused ? 25 : 20;
             color = focused ? 'red' : 'black';
@@ -65,8 +62,8 @@ function NavigationTab(){
           component = { Boutique }
         />
         <Tab.Screen
-          name = "Accueil"
-          component = { Accueil }
+          name = "NavAccueil"
+          component = { NavAccueil }
         />
         <Tab.Screen
           name = "Prestation"
@@ -86,7 +83,7 @@ function App({navigation}){
               backgroundColor : 'white',
             },
             headerLeft: () => (
-            <FontAwesome5 name ="user-alt" onPress= {() => {navigation.navigate(SignInScreen)}} color ="red" size= "25"/>
+            <FontAwesome5 name ="user-alt" onPress= {() => {navigation.navigate(NavProfil)}} color ="red" size= "25"/>
             ),
             headerRight: () => (
             <FontAwesome5 name ="cart-arrow-down" onPress= {() => {navigation.navigate(Panier)}} color ="red" size ="25"/>
@@ -122,8 +119,8 @@ function App({navigation}){
             },
             headerTitle: (props) => <LogoTitle/>
           }}
-          name = "SignInScreen"
-          component = { SignInScreen }
+          name = "NavProfil"
+          component = { NavProfil }
         />
       </Stack.Navigator>
     </NavigationContainer>

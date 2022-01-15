@@ -4,9 +4,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import { Pressable, StyleSheet, Text, View, Image, Button } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import PrestationListe from './PrestationListe';
-import PrestationAccueil from './PrestationAccueil';
-import InfoPrestations from './InfoPrestations';
+import QSN from './QSN';
+import Accueil from './Accueil';
 
 
 
@@ -22,41 +21,27 @@ function LogoTitle() {
   );
 }
 
-export default function Boutique({navigation}){
+export default function NavAccueil({navigation}){
   return (
     <NavigationContainer independent={true}>
-      <Stack.Navigator initialRouteName="PrestationAccueil">
+      <Stack.Navigator initialRouteName="Accueil">
         <Stack.Screen options={{headerShown: false}}
-          name = "PrestationAccueil"
-          component = { PrestationAccueil }
+          name = "Accueil"
+          component = { Accueil }
         />
         <Stack.Screen
           options ={{
             headerStyle:{
               backgroundColor : 'transparent'
             },
-            headerBackTitle : 'Catégories',
+            headerBackTitle : 'Accueil',
             headerBackTitleStyle :{
               color : 'red'
             },
             headerTitle : '',
           }}
-          name = "PrestationListe"
-          component = { PrestationListe }
-        />
-        <Stack.Screen
-          options ={{
-            headerStyle:{
-              backgroundColor : 'transparent'
-            },
-            headerBackTitle : 'Prestations',
-            headerBackTitleStyle :{
-              color : 'red'
-            },
-            headerTitle : '',
-          }}
-          name = "InfoPrestations"
-          component = { InfoPrestations }
+          name = "QSN"
+          component = {QSN}
         />
       </Stack.Navigator>
     </NavigationContainer>
